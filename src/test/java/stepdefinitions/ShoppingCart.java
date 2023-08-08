@@ -57,7 +57,6 @@ public class ShoppingCart {
 	@Then("Can a user remove the product from the shopping cart")
 	public void can_a_user_remove_the_product_from_the_shopping_cart() throws InterruptedException {
 		shoppingCartResultPage.clickOnCashOnDelivery();
-		Thread.sleep(2000);
 		shoppingCartResultPage.clickOnUseThisPaymentMethod();
 		shoppingCartResultPage.removeProduct();
 		Assert.assertTrue(shoppingCartResultPage.validateAmazonCartMessage());

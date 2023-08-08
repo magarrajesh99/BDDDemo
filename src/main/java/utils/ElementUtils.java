@@ -106,6 +106,14 @@ public class ElementUtils {
 		actions.moveToElement(webElement).click().build().perform();
 
 	}
+	
+	public void mouseHover(WebElement element, long durationInSeconds) {
+
+		WebElement webElement = waitForVisibilityOfElement(element, durationInSeconds);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(webElement).build().perform();
+
+	}
 
 	public WebElement waitForVisibilityOfElement(WebElement element, long durationInSeconds) {
 
