@@ -90,8 +90,11 @@ public class Register {
 	}
 
 	
-	@Then("Is the registered user not able to access the user account after logout")
-	public void is_the_registered_user_not_able_to_access_the_user_account_after_logout() {
+	@Then("Is the registered user not able to access the user account after logout{string}")
+	public void is_the_registered_user_not_able_to_access_the_user_account_after_logout(String pass) {
+		shoppingCartResultPage=new ShoppingCartPage(driver);
+		shoppingCartResultPage.enterPassword(pass);
+		shoppingCartResultPage.clickOnSignInSubmit();
 		registerResultsPage.mouseOverOnAccountsAndList();
 		Assert.assertTrue(registerResultsPage.signOutIsDisplayed());
 		registerResultsPage.clickOnSignOut();
