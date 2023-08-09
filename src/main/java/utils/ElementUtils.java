@@ -163,6 +163,17 @@ public class ElementUtils {
 		}
 
 	}
+	
+	public boolean displayEnabledStatusOfElement(WebElement element, long durationInSeconds) {
+
+		try {
+			WebElement webElement = waitForVisibilityOfElement(element, durationInSeconds);
+			return webElement.isEnabled();
+		} catch (Throwable e) {
+			return false;
+		}
+
+	}
 
 	public void sortingOrderAscending(List<WebElement> actualPrices, long durationInSeconds) {
 
