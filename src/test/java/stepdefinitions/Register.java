@@ -80,13 +80,13 @@ public class Register {
 	}
 
 	@Then("Are the user sessions being manitained for the intended time period")
-	public void are_the_user_sessions_being_manitained_for_the_intended_time_period() {
-		registerResultsPage.intentedTimePeriod();
+	public void are_the_user_sessions_being_manitained_for_the_intended_time_period() throws InterruptedException {
+		Assert.assertTrue(registerResultsPage.intentedTimePeriod());
 	}
 
 	@Then("Is the users session timing out and expiring after a defined time")
 	public void is_the_users_session_timing_out_and_expiring_after_a_defined_time() {
-		registerResultsPage.expiringSessionPeriod();
+		Assert.assertTrue(registerResultsPage.expiringSessionPeriod());
 	}
 
 	

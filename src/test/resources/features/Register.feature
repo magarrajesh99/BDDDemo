@@ -12,4 +12,5 @@ Feature: Testing registration and login of the online shopping website(Test case
       | Rajesh Magar | +919960060622 | 
     Then Are the user sessions being manitained for the intended time period
     Then Is the users session timing out and expiring after a defined time
+    Given User Sign in Amazon website"9960060622""Mar$1603"
     Then Is the registered user not able to access the user account after logout

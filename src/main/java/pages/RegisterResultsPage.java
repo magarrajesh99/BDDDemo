@@ -1,16 +1,12 @@
 package pages;
 
-import java.time.Duration;
+import java.util.Date;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import utils.CommonUtils;
 import utils.ElementUtils;
 
@@ -59,10 +55,10 @@ public class RegisterResultsPage {
 
 	@FindBy(xpath = "//span[text()='Account & Lists']")
 	private List<WebElement> loginAndSecurityWebElements;
-	
+
 	@FindBy(xpath = "//span[text()='Sign Out']")
 	private WebElement signOut;
-	
+
 	@FindBy(xpath = "//[text()='expired']")
 	private WebElement expired;
 
@@ -121,34 +117,55 @@ public class RegisterResultsPage {
 
 	public boolean verifyLoginDetails(String expecteddata) {
 
-		return driver.findElement(By.xpath("//div[contains(@class,'a-row') and contains(text(),'"+expecteddata+"')]")).isDisplayed();
+		return driver
+				.findElement(By.xpath("//div[contains(@class,'a-row') and contains(text(),'" + expecteddata + "')]"))
+				.isDisplayed();
 
 	}
 
 	public void mouseOverOnAccountsAndList() {
-		elementUtils.mouseHover(accountAndList,CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
-		
+		elementUtils.mouseHover(accountAndList, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
+
 	}
 
 	public boolean signOutIsDisplayed() {
-		
-		return elementUtils.displayStatusOfElement(signOut,CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
+
+		return elementUtils.displayStatusOfElement(signOut, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
 	}
 
 	public void clickOnSignOut() {
-		 elementUtils.clickOnElement(signOut,CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
-		
+		elementUtils.clickOnElement(signOut, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
+
 	}
 
-	public void intentedTimePeriod() {
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(180));
-		wait.until(ExpectedConditions.invisibilityOf(helloUser));
-		
+	public Boolean intentedTimePeriod() throws InterruptedException {
+
+		Date date = new Date();
+		String currentDate = (date.toString().trim());
+		// display time and date using toString()
+		System.out.println(currentDate);
+		Thread.sleep(1200000);
+
+		elementUtils.clickOnElement(accountAndList, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
+		elementUtils.clickOnElement(loginAndSecurity, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
+
+		date = new Date();
+		String lastDate = (date.toString().trim());
+		// display time and date using toString()
+		System.out.println(lastDate);
+
+		if (elementUtils.displayStatusOfElement(password, CommonUtils.EXPLICIT_WAIT_BASIC_TIME))
+			return true;
+		else
+			return false;
+
 	}
 
-	public void expiringSessionPeriod() {
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(180));
-		wait.until(ExpectedConditions.visibilityOf(expired));
+	public Boolean expiringSessionPeriod() {
+		if (elementUtils.displayStatusOfElement(password, CommonUtils.EXPLICIT_WAIT_BASIC_TIME))
+			return true;
+		else
+			return false;
 	}
 
 }

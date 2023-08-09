@@ -27,7 +27,7 @@ public class SearchDomainPage {
 	@FindBy(xpath = "//a[text()='Domain Name Search' and contains(@data-track-name,'domain_name_search')]")
 	private WebElement domainNameSearch;
 	
-	@FindBy(xpath = "//button[contains(@aria-label,'Search for a domain')]")
+	@FindBy(xpath = "//button[contains(@class,'button-primary')]")
 	private WebElement searchBox;
 	
 	@FindBy(xpath = "//input[contains(@placeholder,'Find your best domain')]")
@@ -85,7 +85,7 @@ public class SearchDomainPage {
 
 	public void enterDomainNameInSearchBox(String domainName) {
 		elementUtils.typeTextIntoElement(findYourBestDoman,domainName,CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
-		
+			
 	}
 
 

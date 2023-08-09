@@ -17,7 +17,6 @@ public class DriverFactory {
 	public static WebDriver initializeBrowser(String browserName) {
 		
 		if(browserName.equals("chrome")) {
-			
 			driver = new ChromeDriver();
 			
 		}else if(browserName.equals("firefox")) {
@@ -33,6 +32,8 @@ public class DriverFactory {
 			driver = new SafariDriver();
 			
 		}
+		
+		
 		
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
