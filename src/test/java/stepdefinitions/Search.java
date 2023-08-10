@@ -2,7 +2,6 @@ package stepdefinitions;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-
 import factory.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -18,6 +17,7 @@ public class Search {
 	public void is_the_website_having_multiple_filters_to_search_products_like_price_range_category_brands_etc(String searchDropdownBox) throws InterruptedException {
 		driver = DriverFactory.getDriver();
 		searchResultsPage=new SearchResultsPage(driver);
+	
 		Assert.assertTrue(searchResultsPage.validateSearchDropdownBox());
 		searchResultsPage.selectSearchDropdownBox(searchDropdownBox);
 		searchResultsPage.clickOnSearchSubmitButton();

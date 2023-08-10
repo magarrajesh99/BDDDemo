@@ -12,6 +12,7 @@ public class ShoppingCartPage {
 
 	WebDriver driver;
 	private ElementUtils elementUtils;
+	String actualPriceBeforeCart;
 
 	public ShoppingCartPage(WebDriver driver) {
 
@@ -32,6 +33,9 @@ public class ShoppingCartPage {
 
 	@FindBy(id = "price")
 	private WebElement priceBook;
+	
+	@FindBy(xpath = "//td[contains(@class,'total-price')]")
+	private WebElement totalPrice;
 
 	@FindBy(name = "quantity")
 	private WebElement quantity;
@@ -85,16 +89,15 @@ public class ShoppingCartPage {
 
 	public void clickOnProduct() {
 		elementUtils.clickOnElement(wisdomBook, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
+		
+		elementUtils.switchToChildWindow();
 
 	}
 
-	public boolean correctPriceOfBook(String bookPrice) {
-
-		elementUtils.switchToChildWindow();
-		if (priceBook.getText().equals(bookPrice))
-			return elementUtils.displayStatusOfElement(priceBook, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
-		else
-			return false;
+	public boolean correctPriceOfBook() {		 
+		
+		actualPriceBeforeCart=priceBook.getText().trim();
+		return elementUtils.displayStatusOfElement(priceBook,CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
 
 	}
 
@@ -168,8 +171,15 @@ public class ShoppingCartPage {
 	}
 
 	public boolean validateEmailSignInPageAppearForGuest() {
-		
+
 		return elementUtils.displayStatusOfElement(continueButton, CommonUtils.EXPLICIT_WAIT_BASIC_TIME);
+	}
+
+	public boolean verifyProductPrice() {
+		 if(elementUtils.getTextFromElement(totalPrice,CommonUtils.EXPLICIT_WAIT_BASIC_TIME).equalsIgnoreCase(actualPriceBeforeCart))
+			 return true;
+		 else
+			 return false;
 	}
 
 }

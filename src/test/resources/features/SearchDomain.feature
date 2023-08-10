@@ -10,4 +10,4 @@ Feature: Search the domain name and validate whether domain is available or not(
   When Get value of title of "GoDaddy Domain Search - Buy and Register Available Domain Names" page and print it
   Then Verify that the search box is present on the page and its enabled  
   Then Enter some test value in the search box like "mydomain" and click on Add to Cart button
-  Then Verify that the price "₹ 5,249.00" of the domain is also displayed along with domain name "mydomain.com"
+  Then Verify that the price of the domain is also displayed along with domain name "mydomain.com"

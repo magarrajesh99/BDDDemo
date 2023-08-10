@@ -1,7 +1,7 @@
 Feature: Testing registration and login of the online shopping website(Test case no2)
 
   Scenario: Verify testing registration and login of the online shopping website
-    Given Can a guest purchage product as a guest user"Books""Wisdom From The Ramayana: On Life and Relationships""₹179.00"
+    Given Can a guest purchage product as a guest user"Books""Wisdom From The Ramayana: On Life and Relationships"
     When Can a guest able to register on the website
       | Named        | Mobile Number | email id.com            | password |
       | Rajesh Magar |    9960060622 | magarrajesh99@gmail.com | Mar$1603 |

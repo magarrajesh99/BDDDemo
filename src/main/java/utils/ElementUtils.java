@@ -3,7 +3,9 @@ package utils;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -46,7 +48,7 @@ public class ElementUtils {
 
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationInSeconds));
-			webElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+			webElement = wait.until(ExpectedConditions.visibilityOf(element));
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -231,24 +233,15 @@ public class ElementUtils {
 	
 	public void switchToChildWindow() {
 
-		// Store the current window handle
-		String winHandleBefore = driver.getWindowHandle();
-		
-		System.out.println("Parent Window Id"+winHandleBefore);
-
-		// Perform the click operation that opens new window
-
-		// Switch to new window opened
-		for(String winHandle : driver.getWindowHandles()){
-			
-			if(!winHandle.equals(winHandleBefore))
-			{
-		    driver.switchTo().window(winHandle);
-		    System.out.println("Child Window Id"+winHandle);
-			}
-		}
-
-
+		Set<String> w = driver.getWindowHandles();
+	      // window handles iterate
+	      Iterator<String> t = w.iterator();
+	      String ch = t.next();
+	      String pw = t.next();
+	      // switching child window
+	      driver.switchTo().window(pw);
+	      System.out.println("Child window title "+ driver.getTitle());
+	      	     
 	}
 
 }

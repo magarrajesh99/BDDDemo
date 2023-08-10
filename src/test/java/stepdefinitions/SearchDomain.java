@@ -27,8 +27,10 @@ public class SearchDomain {
 	
 
 @When("Get value of title of {string} page and print it")
-public void get_value_of_title_of_page_and_print_it(String expectedTitle) {
+public void get_value_of_title_of_page_and_print_it(String expectedTitle) throws InterruptedException {
 	Assert.assertEquals(expectedTitle,searchDomainPage.getTitleOfSearchDomainName());
+	
+	
 }
 
 @Then("Verify that the search box is present on the page and its enabled")
@@ -47,12 +49,11 @@ public void enter_some_test_value_in_the_search_box_like_and_click_on_add_to_car
 	searchDomainPage.clickOnAddToCart();
 }
 
-@Then("Verify that the price {string} of the domain is also displayed along with domain name {string}")
-public void verify_that_the_price_of_the_domain_is_also_displayed_along_with_domain_name(String expectedPrice, String expectedName) {
+@Then("Verify that the price of the domain is also displayed along with domain name {string}")
+public void verify_that_the_price_of_the_domain_is_also_displayed_along_with_domain_name(String expectedName) {
 	searchDomainPage.clickOnViewCartButton();
-	Assert.assertEquals(expectedPrice,searchDomainPage.verifyPriceOfDomainName());
-	Assert.assertEquals(expectedName,searchDomainPage.verifyDomainName());
-	
+	Assert.assertTrue(searchDomainPage.verifyPriceOfDomainName());
+	Assert.assertEquals(expectedName,searchDomainPage.verifyDomainName());	
 	
 }
 

@@ -20,8 +20,8 @@ public class Register {
 	ShoppingCartPage shoppingCartResultPage;
 	RegisterResultsPage registerResultsPage;
 		
-	@Given("Can a guest purchage product as a guest user{string}{string}{string}")
-	public void can_a_guest_purchage_product_as_a_guest_user(String searchDropdownBox, String bookName,String bookPrice) throws InterruptedException {
+	@Given("Can a guest purchage product as a guest user{string}{string}")
+	public void can_a_guest_purchage_product_as_a_guest_user(String searchDropdownBox, String bookName) {
 		driver = DriverFactory.getDriver();
 		searchResultsPage=new SearchResultsPage(driver);
 		shoppingCartResultPage=new ShoppingCartPage(driver);
